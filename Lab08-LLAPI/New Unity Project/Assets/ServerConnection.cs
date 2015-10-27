@@ -14,6 +14,8 @@ public class ServerConnection : MonoBehaviour {
 
 	// Use this for initialization 
 	void Start () { 
+		DontDestroyOnLoad (this);
+
 		GlobalConfig globalConfig = new GlobalConfig ();
 		globalConfig.ReactorModel = ReactorModel.FixRateReactor;
 		globalConfig.ThreadAwakeTimeout = 10;
@@ -30,7 +32,7 @@ public class ServerConnection : MonoBehaviour {
 
 		if (serverSocketID < 0) 
 		{
-			Debug.Log ("Server socket creation falied!");
+			Debug.Log ("Server socket creation failed!");
 		} 
 		else 
 		{
@@ -41,7 +43,8 @@ public class ServerConnection : MonoBehaviour {
 	} 
 
 	// Update is called once per frame 
-	void Update () { 
+	void Update () 
+	{ 
 		if (!serverInitialized) 
 		{
 			return;
@@ -70,23 +73,26 @@ public class ServerConnection : MonoBehaviour {
 						Debug.Log ("Server:Player " + connectionID.ToString() + " connected!");
 					}
 					break;
-				case NetworkEventType.DataEvent:
-				if(recHostId == serverSocketID){
-				//Open a memory stream with a size equal to the buffer we set up earlier
-				Stream memoryStream = new MemoryStream(buffer);
+				case NetworkEventType.DataEvent: //verify the server is the intended target
+					if(recHostId == serverSocketID)
+					{
+						//Open a memory stream with a size equal to the buffer we set up earlier
+						Stream memoryStream = new MemoryStream(buffer);
 
-				//Create a binaryformatter to begin reading the information from the memory string
-				BinaryFormatter binaryFormatter = new BinaryFormatter();
+						//Create a binaryformatter to begin reading the information from the memory string
+						BinaryFormatter binaryFormatter = new BinaryFormatter();
 
-				//Create a binaryformatter to begin reading the information stored in the memory string
-				//then convert that into a string
-					string message = binaryFormatter.Deserialize(memoryStream).ToString();
+						//Create a binaryformatter to begin reading the information stored in the memory string
+						//then convert that into a string
+						string message = binaryFormatter.Deserialize(memoryStream).ToString();
 
-					//debug out the message you worked so hard to figure out!
-					Debug.Log ("Server: Received Data from " + 
-					           connectionID.ToString() + 
-					           "! Message: " + message);
-				}
+						//debug out the message you worked so hard to figure out!
+						Debug.Log ("Server: Received Data from " + 
+						           connectionID.ToString() + 
+						           "! Message: " + message);
+
+						RespondMessage(message, connectionID);//who send the message so the server can respond to that specific person
+					}
 					break;
 				case NetworkEventType.DisconnectEvent:
 					//Server received disconnect event
@@ -101,4 +107,34 @@ public class ServerConnection : MonoBehaviour {
 
 		} while(networkEvent != NetworkEventType.Nothing);
 	} 
+
+	void SendMessage(string message, int target)
+	{
+		byte error;
+		byte[] buffer = new byte[1024];
+		Stream memoryStream = new MemoryStream (buffer);
+		BinaryFormatter binaryFormatter = new BinaryFormatter ();
+
+		binaryFormatter.Serialize (memoryStream, message);
+
+		//					   Who is sending, where to, what channel,	what info, 	how much info,			if there is an error
+		NetworkTransport.Send (serverSocketID, target, reliableChannelID, buffer, (int)memoryStream.Position, out error);
+
+		if(error != (byte)NetworkError.Ok) //error is always assigned, and it uses Ok to notate that there is nothing wrong
+		{
+			NetworkError networkError = (NetworkError) error;
+			Debug.Log ("Error: " + networkError.ToString());
+		}
+	}
+
+	void RespondMessage(string message, int playerID)
+	{
+		//Student will fill this out.
+		if (message == "FirstConnect") {
+			Debug.Log("Received a First Connection message from Player ID " + playerID);
+
+			SendMessage ("goto_NewScene", playerID);
+		}
+	}
+
 }
