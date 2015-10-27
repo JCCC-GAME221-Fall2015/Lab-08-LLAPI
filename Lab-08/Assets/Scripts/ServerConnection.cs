@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
-using System.Runtime.Serialization.Formatters;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.Networking;
 
 public class ServerConnection : MonoBehaviour {
@@ -14,6 +14,8 @@ public class ServerConnection : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        DontDestroyOnLoad(this);
+
 		GlobalConfig globalConfig = new GlobalConfig ();
 		globalConfig.ReactorModel = ReactorModel.FixRateReactor;
 		globalConfig.ThreadAwakeTimeout = 10;
@@ -64,11 +66,67 @@ public class ServerConnection : MonoBehaviour {
 				}
 				break;
 			case NetworkEventType.DataEvent:
+                    //Verify the server is the intended target^
+                    if(recHostId == serverSocketID)
+                    {
+                        //open a memory stream with a size equal to the buffer we set up earlier
+                        MemoryStream memoryStream = new MemoryStream(buffer);
+
+                        //Create a binary formatter to begin reading the information from the member stream
+                        BinaryFormatter binaryFormatter = new BinaryFormatter();
+
+                        //utilize the binary formatter to deserialize the binary information stored i nthe memory string
+                        //then convert that into a string
+                        string message = binaryFormatter.Deserialize(memoryStream).ToString();
+
+                        //debug out the message
+                        Debug.Log("Server: Received Data from " + connectionId.ToString() + ". Message: " + message);
+
+                        RespondMessage(message, connectionId);
+                    }
 				break;
 			case NetworkEventType.DisconnectEvent:
+                    //server received disconnect event
+                    if(recHostId == serverSocketID)
+                    {
+                        Debug.Log("Server: Received disconnect from " + connectionId.ToString());
+                    }
 				break;
 			}
 		} while (networkEvent != NetworkEventType.Nothing);
-	
 	}
+
+    void SendMessage(string message, int target)
+    {
+        byte error;
+        byte[] buffer = new byte[1024];
+        MemoryStream memoryStream = new MemoryStream(buffer);
+        BinaryFormatter binaryFormatter = new BinaryFormatter();
+
+        binaryFormatter.Serialize(memoryStream, message);
+
+        //Who is sending, where to, what channel, what infor, how much infro, if there is an error
+        NetworkTransport.Send(serverSocketID, target, reliableChannelID, buffer, (int)memoryStream.Position, out error);
+
+        //error is always assigned and it uses ok to donate that there is nothing wrong
+        if(error != (byte)NetworkError.Ok)
+        {
+            NetworkError networkError = (NetworkError)error;
+            Debug.Log("Error: " + networkError.ToString());
+        }
+    }
+
+    void RespondMessage(string message, int playerID)
+    {
+        //Student will fill this out
+        if(message == "FirstConnect")
+        {
+            Debug.Log("First Conection: " + playerID);
+        }
+        SendMessage("goto_Scene2", playerID);
+        if(Application.loadedLevelName == "TestScene")
+        {
+            Application.LoadLevel("Scene2");
+        }
+    }
 }

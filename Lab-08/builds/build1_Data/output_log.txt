@@ -1,0 +1,270 @@
+Initialize engine version: 5.1.2f1 (afd2369b692a)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 750 Ti (ID=0x1380)
+    Vendor:   NVIDIA
+    VRAM:     1993 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\svc-student\Desktop\Lab-08-LLAPI\Lab-08\builds\build1_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\svc-student\Desktop\Lab-08-LLAPI\Lab-08\builds\build1_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\svc-student\Desktop\Lab-08-LLAPI\Lab-08\builds\build1_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\svc-student\Desktop\Lab-08-LLAPI\Lab-08\builds\build1_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\svc-student\Desktop\Lab-08-LLAPI\Lab-08\builds\build1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\svc-student\Desktop\Lab-08-LLAPI\Lab-08\builds\build1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\svc-student\Desktop\Lab-08-LLAPI\Lab-08\builds\build1_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\svc-student\Desktop\Lab-08-LLAPI\Lab-08\builds\build1_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\svc-student\Desktop\Lab-08-LLAPI\Lab-08\builds\build1_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\svc-student\Desktop\Lab-08-LLAPI\Lab-08\builds\build1_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: C:\Users\svc-student\Desktop\Lab-08-LLAPI\Lab-08\builds\build1_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\svc-student\Desktop\Lab-08-LLAPI\Lab-08\builds\build1_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\svc-student\Desktop\Lab-08-LLAPI\Lab-08\builds\build1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\svc-student\Desktop\Lab-08-LLAPI\Lab-08\builds\build1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.062 seconds
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at -1920,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\svc-student\Desktop\Lab-08-LLAPI\Lab-08\builds\build1_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\svc-student\Desktop\Lab-08-LLAPI\Lab-08\builds\build1_Data\Managed\System.dll (this message is harmless)
+Client socket creation success
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 23f4 -> priority: 1 
+  Thread -> id: 200c -> priority: 1 
+Client: Connected to server0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.246371 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 155.
+Total: 0.088054 ms (FindLiveObjects: 0.007840 ms CreateObjectMapping: 0.008745 ms MarkObjects: 0.065437 ms  DeleteObjects: 0.005428 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.366692 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.117003 ms (FindLiveObjects: 0.015077 ms CreateObjectMapping: 0.015680 ms MarkObjects: 0.072373 ms  DeleteObjects: 0.012966 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.315427 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.085340 ms (FindLiveObjects: 0.008745 ms CreateObjectMapping: 0.007237 ms MarkObjects: 0.063326 ms  DeleteObjects: 0.005428 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.292207 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.082023 ms (FindLiveObjects: 0.007237 ms CreateObjectMapping: 0.007237 ms MarkObjects: 0.061215 ms  DeleteObjects: 0.005729 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.245466 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.075992 ms (FindLiveObjects: 0.007840 ms CreateObjectMapping: 0.006634 ms MarkObjects: 0.056089 ms  DeleteObjects: 0.004824 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.256322 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.100719 ms (FindLiveObjects: 0.015077 ms CreateObjectMapping: 0.006634 ms MarkObjects: 0.074182 ms  DeleteObjects: 0.004523 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.334124 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.114892 ms (FindLiveObjects: 0.020807 ms CreateObjectMapping: 0.006634 ms MarkObjects: 0.082927 ms  DeleteObjects: 0.003920 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.234912 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.142032 ms (FindLiveObjects: 0.023822 ms CreateObjectMapping: 0.006332 ms MarkObjects: 0.089562 ms  DeleteObjects: 0.021712 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.255719 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.093180 ms (FindLiveObjects: 0.006031 ms CreateObjectMapping: 0.007237 ms MarkObjects: 0.074182 ms  DeleteObjects: 0.004824 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.268686 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.116400 ms (FindLiveObjects: 0.014474 ms CreateObjectMapping: 0.006935 ms MarkObjects: 0.081420 ms  DeleteObjects: 0.012966 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.310602 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.098608 ms (FindLiveObjects: 0.006332 ms CreateObjectMapping: 0.006332 ms MarkObjects: 0.071770 ms  DeleteObjects: 0.013570 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.271400 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.102227 ms (FindLiveObjects: 0.006332 ms CreateObjectMapping: 0.015680 ms MarkObjects: 0.066342 ms  DeleteObjects: 0.013570 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.263560 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.109766 ms (FindLiveObjects: 0.006935 ms CreateObjectMapping: 0.015379 ms MarkObjects: 0.073881 ms  DeleteObjects: 0.013268 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.257227 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.093783 ms (FindLiveObjects: 0.006634 ms CreateObjectMapping: 0.006935 ms MarkObjects: 0.066342 ms  DeleteObjects: 0.013268 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.281955 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.091673 ms (FindLiveObjects: 0.006332 ms CreateObjectMapping: 0.006332 ms MarkObjects: 0.072675 ms  DeleteObjects: 0.006031 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.287684 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.112178 ms (FindLiveObjects: 0.007538 ms CreateObjectMapping: 0.007237 ms MarkObjects: 0.063025 ms  DeleteObjects: 0.004824 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.254513 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.080213 ms (FindLiveObjects: 0.006935 ms CreateObjectMapping: 0.007237 ms MarkObjects: 0.060311 ms  DeleteObjects: 0.005428 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.266274 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.078706 ms (FindLiveObjects: 0.007538 ms CreateObjectMapping: 0.006935 ms MarkObjects: 0.059105 ms  DeleteObjects: 0.004523 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.243958 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.077499 ms (FindLiveObjects: 0.007237 ms CreateObjectMapping: 0.006935 ms MarkObjects: 0.058200 ms  DeleteObjects: 0.004824 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.317538 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.073579 ms (FindLiveObjects: 0.006634 ms CreateObjectMapping: 0.006031 ms MarkObjects: 0.055787 ms  DeleteObjects: 0.004824 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.260846 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.098005 ms (FindLiveObjects: 0.011459 ms CreateObjectMapping: 0.006935 ms MarkObjects: 0.072071 ms  DeleteObjects: 0.006935 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.251799 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.079912 ms (FindLiveObjects: 0.007538 ms CreateObjectMapping: 0.006935 ms MarkObjects: 0.060009 ms  DeleteObjects: 0.004824 ms)
+
+Client: Received data from 1. Message: goto_Scene2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.279542 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 157.
+Total: 0.081118 ms (FindLiveObjects: 0.008745 ms CreateObjectMapping: 0.006332 ms MarkObjects: 0.060311 ms  DeleteObjects: 0.005126 ms)
+
