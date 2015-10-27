@@ -51,7 +51,8 @@ public class ClientConnection : MonoBehaviour {
 		//Connect to the server using 
 		//int NetworkTransport.Connect(int socketConnectingFrom, string ipAddress, int port, 0, out byte possibleError)
 		//Store the ID of the connection in clientServerConnectionID
-		NetworkTransport.Connect(clientSocketID, );
+		clientServerConnectionID = 
+			NetworkTransport.Connect(clientSocketID, Network.player.ipAddress.ToString(), 7777, 0, out error);
 		//Display the error (if it did error out)
 		if(error != (byte)NetworkError.Ok)
 		{
@@ -78,7 +79,7 @@ public class ClientConnection : MonoBehaviour {
 		//If the user pressed the R key
 			//Send a message to the server "Random message!"
 		if (Input.GetKeyDown (KeyCode.R)) {
-			Sen
+			SendMessage ("Random Message!");
 		}
 	}
 	
@@ -97,7 +98,7 @@ public class ClientConnection : MonoBehaviour {
 		binaryFormatter.Serialize (memoryStream, message);
 
 		//Send the message from this client, over the client server connection, using the reliable channel
-		NetworkTransport.Send (clientSocketID, , reliableChannelID, buffer, (int)memoryStream.Position, out error);
+		NetworkTransport.Send (clientSocketID, clientServerConnectionID, reliableChannelID, buffer, (int)memoryStream.Position, out error);
 
 		//Display the error (if it did error out)
 		if(error != (byte)NetworkError.Ok)
@@ -118,10 +119,20 @@ public class ClientConnection : MonoBehaviour {
 	void PollBasics()
 	{
 		//prepare to receive messages by practicing good bookkeeping
-		
+		int recHostId;					//who received the message
+		int connectionID;				//who sent the message
+		int channelId;					//What channel the message was sent from
+		int dataSize;					//how large teh message can be
+		byte[] buffer = new byte[1024];	//the actual message
+		byte error;						//if there is an error
+
+		NetworkEventType networkEvent = NetworkEventType.DataEvent;
+
 		//do
 		do{
 			//Receive network events
+			networkEvent = NetworkTransport.Receive(out recHostId, out connectionID, out channelId,
+			                                        buffer, 1024, out dataSize, out error);
 			//switch on the network event types
 			switch(networkType)
 			{
@@ -133,6 +144,10 @@ public class ClientConnection : MonoBehaviour {
 						//debug out that i connected to the server, and display the ID of what I connected to
 						//set my bool that is keeping track if I am connected to a server to true
 			case NetworkEventType.ConnectEvent:
+				if(recHostId == clientSocketID)
+				{
+
+				}
 				break;
 				//if data event
 					//verify that the message was meant for me and if I am connected to a server
