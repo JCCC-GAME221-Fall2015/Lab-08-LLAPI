@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/**
+ * @author Darrick Hilburn
+ * 
+ * This script is the client-side code for Low-Level API network programming.
+ */
+
+using UnityEngine;
 using System.Collections;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
@@ -38,28 +44,41 @@ public class ClientConnection : MonoBehaviour
         //Open a socket for the client
         clientSocketID = NetworkTransport.AddHost(hostTopology, DEFAULT_PORT);
         //Make sure the client created the socket successfully
-
+        if (clientSocketID < 0)
+            Debug.Log("Client socket creation failed");
+        else
+            Debug.Log("Client socket creation successful");
         //Create a byte to store a possible error
         byte possibleError;
         //Connect to the server using 
         //int NetworkTransport.Connect(int socketConnectingFrom, string ipAddress, int port, 0, out byte possibleError)
         //Store the ID of the connection in clientServerConnectionID
-        
+        clientServerConnectionID = NetworkTransport.Connect(clientSocketID, "localhost", DEFAULT_PORT, 0, out possibleError);
         
         //Display the error (if it did error out)
+        if (!possibleError.Equals((byte)NetworkError.Ok))
+        {
+            NetworkError error = (NetworkError)possibleError;
+            Debug.Log("Error occurred: " + error.ToString());
+        }
     }
 
     void Update()
     {
         //If the client failed to create the socket, leave this function
-
+        if (!isClientConnected)
+        {
+            return;
+        }
         PollBasics();
-
         //If the user pressed the Space key
         //Send a message to the server "FirstConnect"
-
+        if (Input.GetKeyDown(KeyCode.Space))
+            SendMessage("FirstConnect");
         //If the user pressed the R key
         //Send a message to the server "Random message!"
+        if (Input.GetKeyDown(KeyCode.R))
+            SendMessage("Random message!");
     }
 
     void SendMessage(string message)
@@ -69,22 +88,41 @@ public class ClientConnection : MonoBehaviour
         //Create a memory stream to send the information through
         //Create a binary formatter to serialize and translate the message into binary
         //Serialize the message
+        byte possibleError;
+        byte[] buffer = new byte[BUFFER_SIZE];
+        Stream memoryStream = new MemoryStream(buffer);
+        BinaryFormatter binaryFormatter = new BinaryFormatter();
 
+        binaryFormatter.Serialize(memoryStream, message);
         //Send the message from this client, over the client server connection, using the reliable channel
-
+        NetworkTransport.Send(clientServerConnectionID, clientSocketID, reliableChannelID, buffer, BUFFER_SIZE, out possibleError);
         //Display the error (if it did error out)
+        if (!possibleError.Equals((byte)NetworkError.Ok))
+        {
+            NetworkError error = (NetworkError)possibleError;
+            Debug.Log("Error occurred: " + error.ToString());
+        }
     }
 
     void InterperateMessage(string message)
     {
         //if the message is "goto_NewScene"
         //load the level named "Scene2"
+        if (message.Equals("goto_NewScene"))
+            Application.LoadLevel("Scene2");
     }
 
     void PollBasics()
 	{
 		//prepare to receive messages by practicing good bookkeeping
-		
+        int recHostID,
+            connectionID,
+            channelID,
+            dataSize;
+        byte[] buffer = new byte[BUFFER_SIZE];
+        byte possibleError;
+        NetworkEventType networkEvent;
+
 		//do
 			//Receive network events
 			//switch on the network event types
@@ -103,5 +141,38 @@ public class ClientConnection : MonoBehaviour
 						//debug that I disconnected
 						//set my bool that is keeping track if I am connected to a server to false
 		//while (the network event I am receiving is not Nothing)
+        do
+        {
+            networkEvent = NetworkTransport.Receive(out recHostID, out connectionID, out channelID, buffer, BUFFER_SIZE, out dataSize, out possibleError);
+            switch (networkEvent)
+            {
+                case (NetworkEventType.Nothing): // Do nothing
+                    break;
+                case (NetworkEventType.ConnectEvent): // Broadcast that a client has connected
+                    if (recHostID.Equals(clientSocketID))
+                    {
+                        Debug.Log("Connected to server " + clientServerConnectionID);
+                        isClientConnected = true;
+                    }
+                    break;
+                case (NetworkEventType.DataEvent): // Broadcast that a client is sending data
+                    if (recHostID.Equals(clientSocketID) && isClientConnected)
+                    {
+                        Stream memoryStream = new MemoryStream(buffer);
+                        BinaryFormatter binaryFormatter = new BinaryFormatter();
+                        string message = binaryFormatter.Deserialize(memoryStream).ToString();
+                        Debug.Log("Received data from server " + clientServerConnectionID + ". Message: " + message);
+                        InterperateMessage(message);
+                    }
+                    break;
+                case (NetworkEventType.DisconnectEvent): // Broadcast that a client has disconnected
+                    if (recHostID.Equals(clientSocketID))
+                    {
+                        Debug.Log("Disconnected from server " + clientServerConnectionID);
+                        isClientConnected = false;
+                    }
+                    break;
+            }
+        } while(!networkEvent.Equals(NetworkEventType.Nothing));
 	}
 }	

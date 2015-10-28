@@ -10,11 +10,11 @@ public class ServerConnection : MonoBehaviour
     const short DEFAULT_PORT = 7777;
     const int BUFFER_SIZE = 1024;
 
-    public int serverSocketID = -1; // Unique number server can be identified by.
-    public int maxConnections = 10; // How many clients can connect to the server.
-    public byte unreliableChannelID; // Unique number identifying a channel utilizing UDP.
-    public byte reliableChannelID; // Unique number identifyig a channel utilizing TCP.
-    public bool serverInitialized = false; // Determines if the server is running or not.
+    int serverSocketID = -1; // Unique number server can be identified by.
+    int maxConnections = 10; // How many clients can connect to the server.
+    byte unreliableChannelID; // Unique number identifying a channel utilizing UDP.
+    byte reliableChannelID; // Unique number identifyig a channel utilizing TCP.
+    bool serverInitialized = false; // Determines if the server is running or not.
 
 	// Use this for initialization
 	void Start () 
@@ -34,8 +34,13 @@ public class ServerConnection : MonoBehaviour
         NetworkTransport.Init(globalConfig);
         // Open the network socket
         serverSocketID = NetworkTransport.AddHost(hostTopology, DEFAULT_PORT);
+        if (serverSocketID < 0) 
+            Debug.Log("Server socket creation failed");
+        else 
+            Debug.Log("Server socket creation successful");
         // Note that the server is running
         serverInitialized = true;
+        DontDestroyOnLoad(this);
 	}
 	
 	// Update is called once per frame
@@ -76,6 +81,7 @@ public class ServerConnection : MonoBehaviour
                         BinaryFormatter binaryFormatter = new BinaryFormatter();
                         string message = binaryFormatter.Deserialize(memoryStream).ToString();
                         Debug.Log("Server: Received data from " + connectionID.ToString() + ". Message: " + message);
+                        RespondMessage(message, recHostID);
                     }
                     break;
                 case(NetworkEventType.DisconnectEvent): // Broadcast that a client has disconnected
@@ -106,6 +112,12 @@ public class ServerConnection : MonoBehaviour
 
     void RespondMessage(string message, int playerID)
     {
-
+        if (message.Equals("FirstConnect"))
+        {
+            Debug.Log("Player " + playerID + " has sent a first connection.");
+            SendMessage("goto_NewScene", playerID);
+            if (!Application.loadedLevelName.Equals("Scene2"))
+                Application.LoadLevel("Scene2");
+        }
     }
 }
