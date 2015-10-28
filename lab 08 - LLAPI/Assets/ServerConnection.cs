@@ -115,7 +115,7 @@ public class ServerConnection : MonoBehaviour {
         }
     }
 
-    void SendMessage(SendMessageOptions message, int target) {
+    void SendMessage(string message, int target) {
         byte error;
         byte[] buffer = new byte[1024];
         Stream memoryStream = new MemoryStream(buffer);

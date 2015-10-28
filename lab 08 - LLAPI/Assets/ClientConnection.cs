@@ -73,7 +73,6 @@ public class ClientConnection : MonoBehaviour {
     void Update() {
         //If the client failed to create the socket, leave this function
         if (!isClientConnected) {
-            print("not connected");
             return;
         }
 
@@ -82,15 +81,13 @@ public class ClientConnection : MonoBehaviour {
         //If the user pressed the Space key
         //Send a message to the server "FirstConnect"
         if (Input.GetKeyDown(KeyCode.Space)) {
-            print("test space");
             SendMessage("FirstConnect");
         }
 
         //If the user pressed the R key
         //Send a message to the server "Random message!"
         if (Input.GetKeyDown(KeyCode.R)) {
-            print("test r");
-            SendMessage("FirstConnect");
+            SendMessage("Random message!");
         }
     }
 
